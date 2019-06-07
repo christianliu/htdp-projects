@@ -1,6 +1,6 @@
 ;; The first three lines of this file were inserted by DrRacket. They record metadata
 ;; about the language level of this file in a form that our tools can easily process.
-#reader(lib "htdp-beginner-abbr-reader.ss" "lang")((modname final-space-invader) (read-case-sensitive #t) (teachpacks ()) (htdp-settings #(#t constructor repeating-decimal #f #t none #f () #f)))
+#reader(lib "htdp-beginner-abbr-reader.ss" "lang")((modname Wk6-Final-SpaceInvaders) (read-case-sensitive #t) (teachpacks ()) (htdp-settings #(#t constructor repeating-decimal #f #t none #f () #f)))
 
 (require 2htdp/universe)
 (require 2htdp/image)
@@ -110,8 +110,8 @@
 ;; Game -> Game
 ;; start the world with (main G0)
 ;; 
-(define (main ws)
-  (big-bang ws                        ; Game
+(define (main g)
+  (big-bang g                        ; Game
     (on-tick   next-game)     ; Game -> Game
     (to-draw   render-game)   ; Game -> Image
     (stop-when end-game?)     ; Game -> Boolean
@@ -248,24 +248,16 @@
 ;; (listof Invader) -> (listof Invader)
 ;; randomly adds invaders to top of screen with probability INVADE-RATE / 10^4
 (check-random (add-i empty) (if (< (random 10000) INVADE-RATE)
-                                (cons (make-invader (random WIDTH)
-                                                    0
-                                                    (* INVADER-X-SPEED
-                                                       (if (< (random 2) 1)
-                                                           1
-                                                           -1)))
+                                (cons (make-invader (random WIDTH) 0
+                                                    (* INVADER-X-SPEED (if (< (random 2) 1) 1 -1)))
                                       empty)
                                 empty))
 
 ;; (define (add-i loi) loi) ;stub
 (define (add-i loi)
   (if (< (random 10000) INVADE-RATE)
-      (cons (make-invader (random WIDTH)
-                          0
-                          (* INVADER-X-SPEED
-                             (if (< (random 2) 1)
-                                 1
-                                 -1)))
+      (cons (make-invader (random WIDTH) 0
+                          (* INVADER-X-SPEED (if (< (random 2) 1) 1 -1)))
             loi)
       loi))
 

@@ -1,0 +1,23 @@
+Domain Analysis for Space Invaders:
+
+Constants:
+-image of MTS
+-image of invaders
+-image of tank
+-image of bullets
+
+-speed of invaders
+-speed of tank
+-speed of bullets
+-rate at which invaders appear on screen
+
+Variables:
+-y position of tank
+-list of active bullets, and their x and y
+-list of active invaders, and their x and y
+
+World functions needed:
+-on tick—progress 
+-on key—have tank respond to left, right; create bullets with space
+-render—show everything on the screen at one time
+-stop-when—end game when an invader reaches the bottom of the screen
